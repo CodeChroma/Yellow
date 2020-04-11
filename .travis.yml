@@ -11,3 +11,5 @@ cache: cargo
 script:
   - cargo build --verbose --all
   - cargo test --verbose --all
+notifications:
+  webhooks: https://discordapp.com/api/webhooks/698618625602617465/9gf8TscmP7xtByEJ4osOS1VehKsOR1qD5psGHYxuYBITS-mX6aZe63gHpnlED6E6h3nj
