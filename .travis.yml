@@ -11,11 +11,11 @@ cache: cargo
 script:
   - cargo build --verbose --all
   - cargo test --verbose --all
-notifications:
-  discord:
-    channels:
-      - 698618625602617465:9gf8TscmP7xtByEJ4osOS1VehKsOR1qD5psGHYxuYBITS-mX6aZe63gHpnlED6E6h3nj
-    pull_request_template:
-      - 'Build [#%{build_number}](%{build_url}) ([%{commit}](%{compare_url})) of %{repository}@%{branch} in PR [#%{pull_request_number}](%{pull_request_url}) by %{author} %{result} in %{duration}'
-    branch_template:
-      - 'Build [#%{build_number}](%{build_url}) ([%{commit}](%{compare_url})) of %{repository}@%{branch} by %{author} %{result} in %{duration}'
+after_success:
+  - wget https://raw.githubusercontent.com/DiscordHooks/travis-ci-discord-webhook/master/send.sh
+  - chmod +x send.sh
+  - ./send.sh success $WEBHOOK_URL
+after_failure:
+  - wget https://raw.githubusercontent.com/DiscordHooks/travis-ci-discord-webhook/master/send.sh
+  - chmod +x send.sh
+  - ./send.sh failure $WEBHOOK_URL
