@@ -8,6 +8,11 @@ jobs:
     - rust: nightly
   fast_finish: true
 cache: cargo
+
+before_install:
+  - sudo apt-get -qq update
+  - sudo apt-get install -y gcc pkg-config openssl libasound2-dev cmake build-essential python3 libfreetype6-dev libexpat1-dev libxcb-composite0-dev libssl-dev libx11-dev
+  
 script:
   - cargo build --verbose --all
   - cargo test --verbose --all
