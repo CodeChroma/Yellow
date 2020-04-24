@@ -16,6 +16,7 @@ jobs:
       uses: whoan/docker-build-with-cache-action@v5.0.1
       with:
         image_name: yellow
+        dockerfile: ./Dockerfile
     - name: Check Formatting
       run: cargo fmt -- --check
     - name: Run tests
