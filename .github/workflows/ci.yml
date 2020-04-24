@@ -12,7 +12,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Build docker images using cache
       uses: whoan/docker-build-with-cache-action@v5.0.1
       with:
         image_name: yellow
