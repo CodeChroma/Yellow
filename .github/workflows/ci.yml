@@ -12,10 +12,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - name: Build docker images using cache
+      uses: whoan/docker-build-with-cache-action@v5.0.1
+      with:
+        image_name: yellow
     - name: Check Formatting
       run: cargo fmt -- --check
-    - name: Build the Docker image
-      run: make setup
     - name: Run tests
       run: make test
