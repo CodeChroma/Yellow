@@ -8,14 +8,17 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
-    - uses: whoan/docker-build-with-cache-action@v5.0.1
-      with:
-        image_name: yellow
-    - name: Check Formatting
-      run: cargo fmt -- --check
-    - name: Run tests
-      run: make test
+      - name: Install dependencies
+        run: apt install gcc pkg-config openssl libasound2-dev cmake build-essential python3 libfreetype6-dev libexpat1-dev libxcb-composite0-dev libssl-dev libx11-dev
+      - name: Check Formatting
+        run: cargo fmt -- --check
+      - name: Build
+        run: cargo build --verbose --all
+      - name: Run tests
+        run: cargo test --verbose --all
+      - name: Discord notification
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+        uses: Ilshidur/action-discord@master
