@@ -1,6 +1,6 @@
 # Yellow - A simple Rust game
 
-[![Build Status](https://travis-ci.com/Druue/yellow.svg?branch=master)](https://travis-ci.com/Druue/yellow)
+![Yellow](https://github.com/Druue/yellow/workflows/Yellow/badge.svg)
 
 More information will come....
 
