@@ -4,4 +4,6 @@ run:
 build:
 	docker run --rm -it -v `pwd`:/app -w /app ${DOCKER_IMAGE} cargo build
 test:
-	docker run --rm -it -v `pwd`:/app -w /app ${DOCKER_IMAGE} cargo test
+	docker run --rm -it ${DOCKER_IMAGE} cargo test
+setup:
+	docker build -t yellow .
